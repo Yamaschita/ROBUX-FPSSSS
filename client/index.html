@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Velocity</title>
+    <style>
+        body, html { margin: 0; padding: 0; overflow: hidden; background: #000; font-family: monospace; color: white; }
+        #canvas-container { width: 100vw; height: 100vh; position: absolute; z-index: 1; }
+        #hud { position: absolute; z-index: 2; width: 100%; height: 100%; pointer-events: none; }
+        #crosshair { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; background: white; transform: translate(-50%, -50%); border-radius: 50%; }
+        
+        .panel { background: rgba(0,0,0,0.5); padding: 10px; position: absolute; }
+        #stats { bottom: 20px; left: 20px; font-size: 20px; }
+        #timer { top: 20px; left: 50%; transform: translateX(-50%); font-size: 24px; font-weight: bold; }
+        #scoreboard { top: 20px; right: 20px; }
+        
+        #shop { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(20,20,20,0.9); padding: 20px; z-index: 10; display: none; pointer-events: auto; border: 2px solid white; }
+        .shop-item { margin: 10px 0; padding: 10px; background: #333; cursor: pointer; display: flex; justify-content: space-between; width: 300px; }
+        .shop-item:hover { background: #555; }
+        
+        #blocker { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 4; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        #instructions { font-size: 24px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="hud">
+        <div id="crosshair"></div>
+        <div id="stats" class="panel">HP: <span id="hp">100</span> | Ammo: <span id="ammo">12</span>/<span id="maxammo">12</span></div>
+        <div id="timer" class="panel">10:00</div>
+        <div id="scoreboard" class="panel">
+            Kills: <span id="kills">0</span> | Deaths: <span id="deaths">0</span> | Streak: <span id="streak">0</span><br>
+            Money: $<span id="money">0</span>
+        </div>
+    </div>
+    
+    <div id="shop">
+        <h2>Weapon Shop (Press B to close)</h2>
+        <div id="shop-items"></div>
+    </div>
+    
+    <div id="blocker">
+        <div id="instructions">Click to Play<br><span style="font-size:16px">WASD: Move, Mouse: Aim, L-Click: Shoot, B: Shop</span></div>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
